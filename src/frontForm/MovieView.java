@@ -1,10 +1,14 @@
 package frontForm;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +16,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 public class MovieView {
 	
@@ -83,16 +91,40 @@ public class MovieView {
 	      controlPanel.add(refreshButton);
 	      controlPanel.add(nameChangeButton);
 	      controlPanel.add(watchButton);
-	      JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, controlPanel, statusLabel);
-	      mainFrame.add(splitPane);
       
 	      refreshButton.addActionListener(new ButtonClickListener());
 	      nameChangeButton.addActionListener(new ButtonClickListener());
 	      watchButton.addActionListener(new ButtonClickListener());
+	      
+	      JTable movieTable = new JTable(MovieList.CONTENT_ROWS, MovieList.HEADER_ROW);
+	      movieTable.setFillsViewportHeight(false);
+	      JScrollPane moviePane = new JScrollPane(movieTable);
+	      
+	      moviePane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
+	    		  "List of available movies", TitledBorder.CENTER, TitledBorder.TOP));
+	      
+	      JTextField searchFilm = new JTextField(10);
+	      
+	      
+	      
+	      JPanel testPanel = new JPanel();
+	      testPanel.add(controlPanel); 
+	      testPanel.add(searchFilm);
+	      testPanel.add(statusLabel); 	     
+	      testPanel.add(moviePane); 
+	      testPanel.setLayout(new BoxLayout(testPanel, 1));
+	      mainFrame.add(testPanel);
+	      
+	      
+	      
+	      
       
 	}
 	
-	public static void changeStatusLabel(String str) {statusLabel.setText(str);}
+	public static void changeStatusLabel(String str) {
+		statusLabel.setText(str);
+	}
+	
 	class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
