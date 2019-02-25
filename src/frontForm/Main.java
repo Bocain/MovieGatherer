@@ -11,6 +11,7 @@ public class Main {
 	public Main() { metoda(); }	
 	
 	public void metoda() {
+		
 		/*
 		 * mView = new MovieView(); new MovieControl(); mView.showGui();
 		 */
