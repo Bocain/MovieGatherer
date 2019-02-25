@@ -8,10 +8,10 @@ public class Main {
 	
 	MovieView tView;
 	
-	public Main() { metoda(); }	
+	public Main(){ metoda(); }	
 	
-	public void metoda() {
-		
+	public void metoda(){
+		MovieList.metoda22();
 		/*
 		 * mView = new MovieView(); new MovieControl(); mView.showGui();
 		 */
@@ -20,5 +20,5 @@ public class Main {
 		
 	}
 
-	public static void main(String[] args) { new Main(); }
+	public static void main(String[] args){ new Main(); }
 }

@@ -95,7 +95,7 @@ public class MovieView {
 	      refreshButton.addActionListener(new ButtonClickListener());
 	      nameChangeButton.addActionListener(new ButtonClickListener());
 	      watchButton.addActionListener(new ButtonClickListener());
-	      MovieList.metoda11();
+	      //MovieList.metoda11();
 	      JTable movieTable = new JTable(MovieList.CONTENT_ROWS, MovieList.HEADER_ROW);
 	      movieTable.setFillsViewportHeight(false);
 	      JScrollPane moviePane = new JScrollPane(movieTable);
