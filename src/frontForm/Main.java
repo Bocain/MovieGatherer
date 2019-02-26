@@ -12,6 +12,7 @@ public class Main {
 	
 	public void metoda(){
 		MovieListParser.createXMLFileMethod();
+		MovieListParser.queryXMLFileMethod();
 		MovieList.metoda22();
 		/*
 		 * mView = new MovieView(); new MovieControl(); mView.showGui();

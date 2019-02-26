@@ -6,15 +6,16 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 import java.io.File;
 
 public class MovieListParser{
 	public static void createXMLFileMethod() {
 		try {
-			//create file
+			//create document
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document docXML = builder.newDocument();
@@ -25,6 +26,13 @@ public class MovieListParser{
 			Element recordElem = docXML.createElement("pozycja");
 			recordElem.appendChild(docXML.createTextNode("film1"));
 			rootElem.appendChild(recordElem);
+
+			String[] contentXML = {"black ader" , "it crowd" , "silicon valey"};
+			for(String cxml:contentXML) {
+				Element elem = docXML.createElement("pozycja");
+				elem.appendChild(docXML.createTextNode(cxml));
+				rootElem.appendChild(elem);
+				}
 			
 			//write to file
 			TransformerFactory tFactory = TransformerFactory.newInstance();
@@ -33,12 +41,34 @@ public class MovieListParser{
 			StreamResult result = new StreamResult(new File("J://textXML.xml"));
 			trans.transform(source, result);
 			
-			StreamResult consolePrint = new StreamResult(System.out);
-			trans.transform(source, consolePrint);
+			//StreamResult consolePrint = new StreamResult(System.out);
+			//trans.transform(source, consolePrint);
 			
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}		
+	}
+	public static void queryXMLFileMethod() {
+
+			try {
+				File xmlFile = new File("J:/textXML.xml");
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document docXML = builder.parse(xmlFile);
+				docXML.getDocumentElement().normalize();
+				docXML.getDocumentElement().getNodeName();
+				NodeList nodeListPosition = docXML.getElementsByTagName("pozycja");
+				
+				for(int i = 0; i < nodeListPosition.getLength(); i++) {
+					org.w3c.dom.Node nodePosition = nodeListPosition.item(i);
+					Element filmTitle = (Element) nodePosition;
+					System.out.println(filmTitle.getTextContent());
+					}
+			}catch(Exception e){
+			e.printStackTrace();
+			}		
+		
+		
 	}
 }
