@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JTextArea;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,12 +21,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class MovieView {
 	
 	JFrame mainFrame;
 	JPanel controlPanel;
+	JTextArea output;
 	private static JLabel statusLabel;
 	
 	public MovieView(){movieGui();}
@@ -39,6 +44,7 @@ public class MovieView {
 	    mainFrame.setLocationRelativeTo(null);
 	    statusLabel = new JLabel("",JLabel.CENTER);
 	    statusLabel.setText("STATUS LABEL");
+	    
 	    
 	    //create a menu bar
 	      final JMenuBar menuBar = new JMenuBar();
@@ -54,11 +60,11 @@ public class MovieView {
 	      openMenuItem.setActionCommand("Open");
 	      JMenuItem exitMenuItem = new JMenuItem("Exit");
 	      exitMenuItem.setActionCommand("Exit");
-	      JMenuItem cutMenuItem = new JMenuItem("Cut");
+	      JMenuItem cutMenuItem = new JMenuItem("Do zagospodarowania");
 	      cutMenuItem.setActionCommand("Cut");
-	      JMenuItem copyMenuItem = new JMenuItem("Copy");
+	      JMenuItem copyMenuItem = new JMenuItem("Wersja językowa");
 	      copyMenuItem.setActionCommand("Copy");
-	      JMenuItem pasteMenuItem = new JMenuItem("Paste");
+	      JMenuItem pasteMenuItem = new JMenuItem("Przywróć nazwy domyślne");
 	      pasteMenuItem.setActionCommand("Paste");
 	    //add menu items to menus
 	      fileMenu.add(newMenuItem);
@@ -95,9 +101,25 @@ public class MovieView {
 	      refreshButton.addActionListener(new ButtonClickListener());
 	      nameChangeButton.addActionListener(new ButtonClickListener());
 	      watchButton.addActionListener(new ButtonClickListener());
+	      
 	      //MovieList.metoda11();
 	      JTable movieTable = new JTable(MovieList.CONTENT_ROWS, MovieList.HEADER_ROW);
 	      movieTable.setFillsViewportHeight(false);
+	      
+	      //get selected field
+	      int numberSelectedRowMovieTable = movieTable.getSelectedRow();
+	      try {
+	      String valueSelectedRowMovieTable = movieTable.getModel().getValueAt(numberSelectedRowMovieTable, 0).toString();
+	      statusLabel.setText(valueSelectedRowMovieTable);
+	      }catch(Exception e){System.out.println("Wybierz film");};
+	      
+	      //get selected field second attempt
+	      ListSelectionModel listSelectionModel;
+	      listSelectionModel = movieTable.getSelectionModel();
+	      listSelectionModel.addListSelectionListener(new SharedListSelectionHandler());
+	      
+	      
+	      
 	      JScrollPane moviePane = new JScrollPane(movieTable);
 	      
 	      moviePane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
@@ -120,6 +142,34 @@ public class MovieView {
 	      
       
 	}
+	int eliminateDoubleClick;
+    class SharedListSelectionHandler implements ListSelectionListener {
+        public void valueChanged(ListSelectionEvent e) { 
+            ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+ 
+            int firstIndex = e.getFirstIndex();
+            int lastIndex = e.getLastIndex();
+            //boolean isAdjusting = e.getValueIsAdjusting(); 
+			/*
+			 * output.append("Event for indexes " + firstIndex + " - " + lastIndex +
+			 * "; isAdjusting is " + isAdjusting + "; selected indexes:");
+			 */
+            
+			/*
+			 * if (! isAdjusting) {System.out.println(lastIndex);}
+			 */
+ 
+            if (lsm.isSelectionEmpty()) {
+                System.out.println("Pusty wybór");
+			}else {System.out.println(firstIndex + "<----------->" + lastIndex);;}
+			
+			/*
+			 * else { // Find out which indexes are selected. int minIndex =
+			 * lsm.getMinSelectionIndex(); int maxIndex = lsm.getMaxSelectionIndex(); for
+			 * (int i = minIndex; i <= maxIndex; i++) { if (lsm.isSelectedIndex(i)) {
+			 * output.append(" " + i); } } }
+			 */} }
+
 	
 	public static void changeStatusLabel(String str) {
 		statusLabel.setText(str);

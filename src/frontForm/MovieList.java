@@ -8,11 +8,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.swing.ImageIcon;
+
 public class MovieList {
 
 	static File f = new File("c:/");
 	static String[] sls = f.list();
 	static String[][] kl/* = new String[sls.length][]*/;
+	
+	//aby dodać ikonki trzeba utworzyć druga klumnę
+	/*
+	 * String[] columnNames = {"Picture", "Description"}; Object[][] data = {
+	 * {aboutIcon, "About"}, {addIcon, "Add"}, {copyIcon, "Copy"}, };
+	 */
+	ImageIcon iconPlay = new ImageIcon("J:/iconPlay.png");
+	ImageIcon iconStop = new ImageIcon("J:/iconStop.png");
 	
 	public static String[] HEADER_ROW = {
 			"tytuł filmu"};

@@ -6,6 +6,8 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -23,9 +25,20 @@ public class MovieListParser{
 			//create content
 			Element rootElem = docXML.createElement("ListaFilmow");
 			docXML.appendChild(rootElem);
-			Element recordElem = docXML.createElement("pozycja");
-			recordElem.appendChild(docXML.createTextNode("film1"));
-			rootElem.appendChild(recordElem);
+			
+			Element movieFile = docXML.createElement("plik");
+			Attr movieFileName = docXML.createAttribute("nazwa-pliku");
+			movieFileName.setValue("J:\\textXML.xml");
+			movieFile.setAttributeNode(movieFileName);
+			rootElem.appendChild(movieFile);
+			
+			//Element pathRecordElem = docXML.createElement("scieżka");
+			//recordElem.appendChild(docXML.createTextNode("J:\\textXML.xml"));
+			//recordElem.appendChild(pathRecordElem);
+			
+			Element movieNameFromUser = docXML.createElement("nazwa-pliku");
+			movieNameFromUser.appendChild(docXML.createTextNode("nazwa nadana"));
+			movieFile.appendChild(movieNameFromUser);
 
 			String[] contentXML = {"black ader" , "it crowd" , "silicon valey"};
 			for(String cxml:contentXML) {
@@ -49,6 +62,7 @@ public class MovieListParser{
 			e.printStackTrace();
 		}		
 	}
+	
 	public static void queryXMLFileMethod() {
 
 			try {
@@ -70,5 +84,13 @@ public class MovieListParser{
 			}		
 		
 		
+	}
+	
+	public static void modifyXMLFileMethod() {
+	try{
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}	
 	}
 }
