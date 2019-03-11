@@ -1,5 +1,5 @@
 package processes;
 
-public class QueryXml {
+public class QueryXml extends DocumentXml{
 
 }

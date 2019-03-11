@@ -1,5 +1,5 @@
 package processes;
 
-public class ModifyXml {
+public class ModifyXml extends DocumentXml implements WriteToXml{
 
 }

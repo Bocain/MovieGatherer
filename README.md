@@ -9,8 +9,9 @@ _[XML generaly](https://docs.oracle.com/javase/tutorial/jaxp/index.html)_
 check box  
 algorytm jako interfejs  
 wyświetlenie ścieżki pliku w label  
-
-
+algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
+query i modify xml  
+movielistparser + movielist => createxml  
 
 ---
 _[MD syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)_  
