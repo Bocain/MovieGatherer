@@ -8,14 +8,18 @@ import frontForm.MovieList;
 public class JarAppPath {
 	
 	public String getJarAppPath(){
-		String pathJar = null;
+		String pathJar;
 		try {
 			pathJar = new File(MovieList.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			}
 		
-		return pathJar;
+		//docelowo
+		//return pathJar;
+		
+		//tymczasowo
+		return "C:/Users/Lenovo/eclipse-workspace/MovieGatherer";
 	}
 
 }

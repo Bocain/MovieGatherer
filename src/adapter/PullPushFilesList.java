@@ -1,21 +1,31 @@
 package adapter;
 
+import java.util.List;
+
 import processesFileList.FileExtensions;
 import processesFileList.GainFilesList;
 import processesFileList.JarAppPath;
+import processesFileList.SetAsListMovieFilesList;
 
-public class PullPushMovieFilesList {
+public class PullPushFilesList {
+	
+	List<String> fileListLevel3;
 	
 	public void pullList(){
 		JarAppPath jarAppPath =	new JarAppPath();
 		String currentJarPath = jarAppPath.getJarAppPath();
 		FileExtensions movieFileExtensions = new FileExtensions();
 		String fileExtensions = movieFileExtensions.getExtensions();
-		new GainFilesList(fileExtensions, currentJarPath);	
+		GainFilesList gainFilesList = new GainFilesList(fileExtensions, currentJarPath);
+		
+		//docelowo gainFilesListByExtension()
+		fileListLevel3 = gainFilesList.filesLevel3();
 	}
 	
 	public void setAsArray() {
-	//SetAsListMovieFilesList.java
+		SetAsListMovieFilesList setAsListMovieFilesList= new SetAsListMovieFilesList();
+		setAsListMovieFilesList.method1(fileListLevel3);
+		setAsListMovieFilesList.method2();
 	}
 	
 	public void saveMovieArray() {
