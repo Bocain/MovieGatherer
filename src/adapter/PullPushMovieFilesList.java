@@ -1,9 +1,24 @@
 package adapter;
 
+import processesFileList.FileExtensions;
+import processesFileList.GainFilesList;
+import processesFileList.JarAppPath;
+
 public class PullPushMovieFilesList {
 	
-	//GainFilesList.java
+	public void pullList(){
+		JarAppPath jarAppPath =	new JarAppPath();
+		String currentJarPath = jarAppPath.getJarAppPath();
+		FileExtensions movieFileExtensions = new FileExtensions();
+		String fileExtensions = movieFileExtensions.getExtensions();
+		new GainFilesList(fileExtensions, currentJarPath);	
+	}
+	
+	public void setAsArray() {
 	//SetAsListMovieFilesList.java
-	//MovieFilesList.java
-
+	}
+	
+	public void saveMovieArray() {
+	//SaveToMovieFilesList.java		
+	}
 }

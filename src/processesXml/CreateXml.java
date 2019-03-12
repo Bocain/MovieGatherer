@@ -19,6 +19,7 @@ public class CreateXml extends DocumentXml implements WriteToXml{
 			
 			Element rootElem = docXML.createElement("ListaFilmow");
 			docXML.appendChild(rootElem);
+			//docXML.appendChild(listaRozszerzeń)
 			Element movieFile = docXML.createElement("plik");
 			Attr movieFileName = docXML.createAttribute("nazwa-pliku");
 			movieFileName.setValue(xmlFilePathString);

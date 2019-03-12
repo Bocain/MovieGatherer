@@ -10,7 +10,6 @@ check box
 algorytm jako interfejs  
 wyświetlenie ścieżki pliku w label  
 algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
-query i modify xml  
 movieView + movieControl + movieModel => genralFrame  
 
 ---

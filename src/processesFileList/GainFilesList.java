@@ -9,10 +9,10 @@ import frontForm.MovieList;
 
 public class GainFilesList {
 	
-	String[] fileExtension;
+	String fileExtension;
 	String currentJarPath;
 	
-	GainFilesList (String[] fileExtensions, String currentJarPath){
+	public GainFilesList (String fileExtensions, String currentJarPath){
 		this.fileExtension = fileExtensions;
 		this.currentJarPath = currentJarPath;
 		gainFilesListByExtension();
@@ -23,8 +23,9 @@ public class GainFilesList {
 		//level_1()
 		//level_2()
 		//level_3()
-		
-	String pathJar = null;
+	
+	JarAppPath jarAppPath =	new JarAppPath();
+	String pathJar = jarAppPath.getJarAppPath();
 	try {
 		pathJar = new File(MovieList.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath();
 	} catch (URISyntaxException e) {e.printStackTrace();}
