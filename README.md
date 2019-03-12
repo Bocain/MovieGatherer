@@ -11,7 +11,7 @@ algorytm jako interfejs
 wyświetlenie ścieżki pliku w label  
 algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
 query i modify xml  
-movielistparser + movielist => createxml  
+movieView + movieControl + movieModel => genralFrame  
 
 ---
 _[MD syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)_  

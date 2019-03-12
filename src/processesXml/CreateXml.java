@@ -1,4 +1,4 @@
-package processes;
+package processesXml;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -7,7 +7,9 @@ import org.w3c.dom.Element;
 public class CreateXml extends DocumentXml implements WriteToXml{
 	
 	private String xmlFilePathString;
-	public void setXmlFilePathString(String xmlFilePathString) {this.xmlFilePathString = xmlFilePathString;}
+	
+	public void setXmlFilePathString(String xmlFilePathString) {
+		this.xmlFilePathString = xmlFilePathString;}
 	
 	public void createXMLFileMethod() {
 		
