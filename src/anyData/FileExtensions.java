@@ -1,8 +1,9 @@
-package processesFileList;
+package anyData;
 
 public class FileExtensions {
 	
-	String extensions = ".*java.*";
+	//Będzie jako String[] extensions;
+	private String extensions = ".*java.*";
 	
 	public void setExtensions(String extensions) {
 		// "mkv mp4"

@@ -6,58 +6,58 @@ import java.util.List;
 
 public class GainFilesList {
 	
-	String fileExtension;
-	String currentJarPath;
+	private String currentJarPath;
+	private String[] dirFilesLevelOne;
+	private List<String> filesListLastLevel;
 	
-	public GainFilesList (String fileExtensions, String currentJarPath){
-		this.fileExtension = fileExtensions;
+	public GainFilesList (String currentJarPath){
 		this.currentJarPath = currentJarPath;
-		gainFilesListByExtension();
 	}
 	
-	List<String> fileListLevel1 = new ArrayList<String>();
-	String[] strLevel1;
-	public void filesLevel1() {
-		File level1 = new File(currentJarPath);
-		String[] strLevel1 = level1.list();	
-		for(String sL1:strLevel1) {fileListLevel1.add(sL1);}
+	private void listingFilesLevelOne() {
+		File levelOnePath = new File(currentJarPath);
+		dirFilesLevelOne = levelOnePath.list();	
+		List<String> filesLevelOne = new ArrayList<String>();
+		for(String dirFile:dirFilesLevelOne) {filesLevelOne.add(dirFile);}
+		filesListLastLevel = filesLevelOne;
+
 	}
 	
-	String currentPath;
-	List<String> fileListLevel2 = new ArrayList<>(fileListLevel1);
-	public void filesLevel2() {
-		for(String addToPath:fileListLevel1) {
-			currentPath = currentJarPath.concat("/").concat(addToPath);
-			File level2 = new File(currentPath);
-			String[] strLevel2 = level2.list();
-			if(strLevel2==null) {continue;}
-			for(String sL2:strLevel2) {fileListLevel2.add(sL2);}
+	private void listingFilesLevelTwo() {
+		List<String> filesListLevelTwo = new ArrayList<>(filesListLastLevel);
+		for(String addToSearchPath:filesListLastLevel) {
+			String currentPathSearch = currentJarPath.concat("/").concat(addToSearchPath);
+			File levelTwoPath = new File(currentPathSearch);
+			String[] dirFilesLevelTwo = levelTwoPath.list();
+				if(dirFilesLevelTwo==null) {continue;}
+				for(String dirFile:dirFilesLevelTwo) {filesListLevelTwo.add(dirFile);}
 		}	
+		filesListLastLevel = filesListLevelTwo;
 	}
 	
-	List<String> fileListLevel3 = new ArrayList<>(fileListLevel2);
-	public List<String> filesLevel3() {
-		for(String sL1:strLevel1) {
-			String crp = currentJarPath.concat("/").concat(sL1);
-			File lvl = new File(crp);
-			String[] sl2 = lvl.list();
-			if(sl2==null) {continue;}
-			for(String sl3:sl2) {
-				String erp = crp.concat("/").concat(sl3);
-				lvl = new File(erp);
-				String[] lastList = lvl.list();
-				if(lastList==null) {continue;}
-				for(String addLast:lastList) {fileListLevel3.add(addLast);}
+	private void listingFilesLevelTree() {	
+		List<String> fileListLevelTree = new ArrayList<>(filesListLastLevel);	
+		for(String dirFile:dirFilesLevelOne) {
+			String pathSearch = currentJarPath.concat("/").concat(dirFile);
+			File levelTwoPath = new File(pathSearch);
+			String[] dirFilesLevelTwo = levelTwoPath.list();
+				if(dirFilesLevelTwo==null) {continue;}
+				for(String dirFiles:dirFilesLevelTwo) {
+				String currentPathSearch = pathSearch.concat("/").concat(dirFiles);
+				File levelTreePath = new File(currentPathSearch);
+				String[] dirFilesLevelTree = levelTreePath.list();
+						if(dirFilesLevelTree==null) {continue;}
+						for(String dirFileTree:dirFilesLevelTree) {fileListLevelTree.add(dirFileTree);}
 			}	
 		}	
-		return fileListLevel3;
+		filesListLastLevel = fileListLevelTree;
 	}
 	
-	void gainFilesListByExtension() {
-		//level_3(level_2(level_1()))
-		//level_1()
-		//level_2()
-		//level_3()
+	public List<String> gainFilesListByExtension() {
+		listingFilesLevelOne();
+		listingFilesLevelTwo();
+		listingFilesLevelTree();
+		return filesListLastLevel;
 	}
 
 }
