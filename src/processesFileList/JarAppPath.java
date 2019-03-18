@@ -16,8 +16,7 @@ public class JarAppPath {
 			}
 		
 		//docelowo
-		//return pathJar;
-		
+		//return pathJar;		
 		//tymczasowo
 		return "C:/Users/Lenovo/eclipse-workspace/MovieGatherer";
 	}

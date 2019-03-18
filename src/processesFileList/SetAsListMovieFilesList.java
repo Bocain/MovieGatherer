@@ -2,17 +2,22 @@ package processesFileList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SetAsListMovieFilesList {
 	
-	List<String> filteredList;
+	List<String> filteredList = new ArrayList<>();
 
-	public void method1(List<String> fileListLevel3, String fileExtensions) {
-		//jedna lista wszystkich rozszerzeń
-		filteredList = new ArrayList<>();
-		for(String elem:fileListLevel3) {
-			if(elem.matches(fileExtensions)) {filteredList.add(elem);}
-		} 
+	public void movieFilesList(List<String> movieFilesList, Set fileExtensions) {
+
+		for(Object filExten:fileExtensions) {
+			for(String elem:movieFilesList) {
+				if(elem.matches(fileExtensions)) {
+					filteredList.add(elem);
+					movieFilesList.remove(elem);
+				}
+			} 
+		}
 	}
 
 	public List<String> getFilteredList() {

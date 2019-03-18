@@ -10,9 +10,7 @@ check box
 algorytm jako interfejs  
 wyświetlenie ścieżki pliku w label  
 algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
-+ FileExtensions z implementacja docelowych roszrzerzeń i nietylko  
-+ SetAsListMovieFilesList  
-+ SaveToMovieFilesList
+
 + PullPushFilesList  
 + po ukończeniu processesFileList zacznij processesXml    
 

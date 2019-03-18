@@ -2,7 +2,7 @@ package adapter;
 
 import java.util.List;
 
-import anyData.FileExtensions;
+import anyData.FileExtensionAssociatedProgram;
 import processesFileList.GainFilesList;
 import processesFileList.JarAppPath;
 import processesFileList.SaveToMovieFilesList;
@@ -22,10 +22,12 @@ public class PullPushFilesList {
 	}
 	
 	public void filterFilesByExtension() {
-		FileExtensions movieFileExtensions = new FileExtensions();
-		String fileExtensions = movieFileExtensions.getExtensions();
+		//uzyskaj roszerzenia ("mkv i mp4") oraz powiazane scieżki programów z xml
+		FileExtensionAssociatedProgram movieFileExtensionsAssociatedProgram = new FileExtensionAssociatedProgram();
+		//uzyskane dane z xml wstaw do FileExtensionAssociatedProgram.setExtensionsAndProgramPath
+		String fileExtensions = movieFileExtensionsAssociatedProgram.getExtensions();
 		setAsListMovieFilesList = new SetAsListMovieFilesList();
-		setAsListMovieFilesList.method1(movieFilesList, fileExtensions);
+		setAsListMovieFilesList.movieFilesList(movieFilesList, fileExtensions);
 	}
 	
 	public void saveMovieArray() {

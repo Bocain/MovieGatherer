@@ -7,4 +7,8 @@ public class GeneralFrame {
 	//przycisk wywołuje klase z adaptera
 	//adapter wywołuje klase z anyData
 	//anyData wykonuje update vista
+
+	//przycisk wywołuje klase z adaptera
+	//adapter wywołuje klase z processes...
+	//processes... wykonuje update vista
 }
