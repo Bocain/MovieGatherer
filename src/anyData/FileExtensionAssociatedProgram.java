@@ -11,7 +11,8 @@ public class FileExtensionAssociatedProgram {
 		this.extensions.put(extensions, associatedProgramPath);
 	}
 	
-	public String getAssociatedProgramPath(String extensions) {	
+	public String getAssociatedProgramPath(String extensions) {
+		//przy uruchomieniu filmu
 		return this.extensions.get(extensions);
 	}
 	

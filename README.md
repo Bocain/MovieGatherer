@@ -27,3 +27,7 @@ https://www.tutorialspoint.com/java_xml/java_dom_create_document.htm
 #####Made:
 ---
 _[TableListSelectionDemo](https://docs.oracle.com/javase/tutorial/uiswing/examples/events/index.html#ListSelectionDemo)_  
+
+---
+Przy każdym uruchomieniu programu lista filmów pobierana jest z xml, natomiast gdy jest odświeżana  
+wtedy zostaje tworzona na nowo.  

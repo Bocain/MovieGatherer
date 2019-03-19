@@ -11,10 +11,21 @@ import processesFileList.SetAsListMovieFilesList;
 public class PullPushFilesList {
 	
 	private List<String> movieFilesList;
+	private List<String> prebuiltMovieFilesList;
 	private SetAsListMovieFilesList setAsListMovieFilesList;
 	
+	public void pullListXml() {
+		//uruchomienie programu
+		//wyciagnięcie gotowej listy filmów z xml i zapis do prebuiltMovieFilesList
+	}
 	
-	public void pullList(){
+	public void pushListUpdate() {
+		//uruchomienie programu
+		//wczytania prebuiltMovieFilesList do processesUpdateVista UpdateMovieList
+	}
+	
+	
+	public void pullNewList(){
 		JarAppPath jarAppPath =	new JarAppPath();
 		String currentJarPath = jarAppPath.getJarAppPath();
 		GainFilesList gainFilesList = new GainFilesList(currentJarPath);
@@ -23,6 +34,7 @@ public class PullPushFilesList {
 	
 	public void filterFilesByExtension() {
 		//uzyskaj roszerzenia ("mkv i mp4") oraz powiazane scieżki programów z xml
+		//rozszerzenia 
 		FileExtensionAssociatedProgram movieFileExtensionsAssociatedProgram = new FileExtensionAssociatedProgram();
 		//uzyskane dane z xml wstaw do FileExtensionAssociatedProgram.setExtensionsAndProgramPath
 		String fileExtensions = movieFileExtensionsAssociatedProgram.getExtensions();
@@ -33,5 +45,7 @@ public class PullPushFilesList {
 	public void saveMovieArray() {
 		SaveToMovieFilesList saveToMovieFilesList = new SaveToMovieFilesList();
 		saveToMovieFilesList.method2(setAsListMovieFilesList);
+		//zapis do prebuiltMovieFilesList i UpdateMovieList z processesUpdateVista
+		//zapis do xml z setAsListMovieFilesList.getFilteredList()
 	}
 }
