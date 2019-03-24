@@ -44,7 +44,8 @@ public class PullPushFilesList {
 	
 	public void saveMovieArray() {
 		SaveToMovieFilesList saveToMovieFilesList = new SaveToMovieFilesList();
-		saveToMovieFilesList.method2(setAsListMovieFilesList);
+		List<String> filteredList = setAsListMovieFilesList.getFilteredList();
+		saveToMovieFilesList.updateContentOfMovieFilesList(filteredList);
 		//zapis do prebuiltMovieFilesList i UpdateMovieList z processesUpdateVista
 		//zapis do xml z setAsListMovieFilesList.getFilteredList()
 	}

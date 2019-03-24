@@ -11,7 +11,7 @@ algorytm jako interfejs
 wyświetlenie ścieżki pliku w label  
 algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
 
-+ PullPushFilesList  
++ PullPushFilesList (jeszcze SetAsListMovieFilesList linia 18)  
 + po ukończeniu processesFileList zacznij processesXml    
 
 
