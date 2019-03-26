@@ -11,22 +11,21 @@ algorytm jako interfejs
 wyświetlenie ścieżki pliku w label  
 algo do ścieżki w processes.SettingXmlFilePath.setCurrentXmlFilePath  
 
-+ PullPushFilesList (jeszcze SetAsListMovieFilesList linia 18)  
-+ po ukończeniu processesFileList zacznij processesXml    
++ uzupełnij xml pierwszymi danymi, jakby kolejne uruchomienie programu po kofiguracji  
++ processesFileList zacznij processesXml    
 
 
 ---
 #####Na koniec:  
 JarAppPath  
+Paczka adapter z klasami anonimowymi  
+SetAsListMovieFilesList linia 12 tworzenie listy z gotowego jara  
+    
 
----
-_[MD syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)_  
-https://www.tutorialspoint.com/java_xml/java_dom_create_document.htm
-
----
-#####Made:
 ---
 _[TableListSelectionDemo](https://docs.oracle.com/javase/tutorial/uiswing/examples/events/index.html#ListSelectionDemo)_  
+_[MD syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)_  
+https://www.tutorialspoint.com/java_xml/java_dom_create_document.htm
 
 ---
 Przy każdym uruchomieniu programu lista filmów pobierana jest z xml, natomiast gdy jest odświeżana  

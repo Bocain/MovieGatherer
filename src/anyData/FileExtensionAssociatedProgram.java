@@ -2,6 +2,7 @@ package anyData;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class FileExtensionAssociatedProgram {
 	
@@ -12,17 +13,11 @@ public class FileExtensionAssociatedProgram {
 	}
 	
 	public String getAssociatedProgramPath(String extensions) {
-		//przy uruchomieniu filmu
 		return this.extensions.get(extensions);
 	}
 	
-	public String getExtensions() {
-		
-		//docelowo
-		//public String getExtensions() {return this.extensions.keySet();}
-
-		//tymczasowo
-		return ".*java.*";
+	public Set<String> getExtensions() {
+		return this.extensions.keySet();
 	}
 
 }

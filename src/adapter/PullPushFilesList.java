@@ -1,6 +1,7 @@
 package adapter;
 
 import java.util.List;
+import java.util.Set;
 
 import anyData.FileExtensionAssociatedProgram;
 import processesFileList.GainFilesList;
@@ -37,9 +38,9 @@ public class PullPushFilesList {
 		//rozszerzenia 
 		FileExtensionAssociatedProgram movieFileExtensionsAssociatedProgram = new FileExtensionAssociatedProgram();
 		//uzyskane dane z xml wstaw do FileExtensionAssociatedProgram.setExtensionsAndProgramPath
-		String fileExtensions = movieFileExtensionsAssociatedProgram.getExtensions();
+		Set<String> fileExtensions = movieFileExtensionsAssociatedProgram.getExtensions();
 		setAsListMovieFilesList = new SetAsListMovieFilesList();
-		setAsListMovieFilesList.movieFilesList(movieFilesList, fileExtensions);
+		setAsListMovieFilesList.movieFilesListSorted(movieFilesList, fileExtensions);
 	}
 	
 	public void saveMovieArray() {
@@ -50,3 +51,4 @@ public class PullPushFilesList {
 		//zapis do xml z setAsListMovieFilesList.getFilteredList()
 	}
 }
+	
